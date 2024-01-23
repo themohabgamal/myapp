@@ -11,6 +11,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
+        //navigate to login with extension
         context.pushNamed(Routes.login);
       },
       style: ElevatedButton.styleFrom(
