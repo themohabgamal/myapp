@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/core/helpers/extensions.dart';
-import 'package:myapp/core/routing/routes.dart';
 import 'package:myapp/core/theming/colors.dart';
 import 'package:myapp/core/theming/styles.dart';
 
-class GetStartedButton extends StatelessWidget {
-  const GetStartedButton({super.key});
+class GeneralBlueButton extends StatelessWidget {
+  final String text;
+  final void Function()? onPressed;
+  const GeneralBlueButton(
+      {required this.text, required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        //navigate to login with extension
-        context.pushNamed(Routes.login);
-      },
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
@@ -22,7 +20,7 @@ class GetStartedButton extends StatelessWidget {
         minimumSize: const Size(double.infinity, 50),
       ),
       child: Text(
-        'Get Started',
+        text,
         style: TextStyles.font16White600Weight,
       ),
     );

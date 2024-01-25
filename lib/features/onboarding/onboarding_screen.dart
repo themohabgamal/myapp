@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myapp/core/helpers/extensions.dart';
 import 'package:myapp/core/theming/styles.dart';
 
+import '../../core/routing/routes.dart';
 import 'widgets/doc_logo_and_title.dart';
 import 'widgets/doctor_with_text.dart';
-import 'widgets/get_started_button.dart';
+import '../../core/widgets/general_blue_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -38,7 +40,10 @@ class OnBoardingScreen extends StatelessWidget {
                   SizedBox(
                     height: 30.h,
                   ),
-                  const GetStartedButton()
+                  GeneralBlueButton(
+                    text: 'Get Started',
+                    onPressed: () => context.pushNamed(Routes.login),
+                  )
                 ],
               ),
             )
