@@ -12,5 +12,5 @@ Project Description
 
 ### Done ✓
 
-- [x] flutter packages pub run build_runner watch --delete-conflicting-outputs  
+- [x] dart run build_runner watch --delete-conflicting-outputs  
 
