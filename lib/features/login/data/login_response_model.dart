@@ -1,35 +1,26 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'login_response_model.g.dart';
+@JsonSerializable()
 class LoginResponseModel {
   final String message;
-  final Data data;
-  final String status;
+  final int status;
   final int code;
+  final Data data;
 
   LoginResponseModel({
     required this.message,
-    required this.data,
     required this.status,
     required this.code,
+    required this.data,
   });
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) {
-    return LoginResponseModel(
-      message: json['message'],
-      data: Data.fromJson(json['data']),
-      status: json['status'],
-      code: json['code'],
-    );
-  }
+  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$LoginResponseModelFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'message': message,
-      'data': data.toJson(),
-      'status': status,
-      'code': code,
-    };
-  }
+  Map<String, dynamic> toJson() => _$LoginResponseModelToJson(this);
 }
 
+@JsonSerializable()
 class Data {
   final String token;
   final String username;
@@ -39,17 +30,7 @@ class Data {
     required this.username,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) {
-    return Data(
-      token: json['token'],
-      username: json['username'],
-    );
-  }
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'token': token,
-      'username': username,
-    };
-  }
+  Map<String, dynamic> toJson() => _$DataToJson(this);
 }

@@ -6,12 +6,11 @@ Project Description
 
 ### Todo
 
-- [ ] add login logic  
 
 ### In Progress
 
 
 ### Done ✓
 
-- [x] create login screen UI  
+- [x] flutter packages pub run build_runner watch --delete-conflicting-outputs  
 
