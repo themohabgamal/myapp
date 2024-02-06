@@ -4,7 +4,7 @@ part '../login_response_model.g.dart';
 @JsonSerializable()
 class LoginResponseModel {
   final String message;
-  final int status;
+  final bool status;
   final int code;
   final Data data;
 

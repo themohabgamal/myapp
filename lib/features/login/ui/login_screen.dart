@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/core/helpers/spacing.dart';
 import 'package:myapp/core/widgets/general_blue_button.dart';
-import 'package:myapp/core/widgets/general_text_form_field.dart';
-
+import 'package:myapp/features/login/data/models/login_request_body.dart';
+import 'package:myapp/features/login/logic/cubit/login_cubit.dart';
+import 'package:myapp/features/login/ui/widget/build_bloc_listener.dart';
+import 'package:myapp/features/login/ui/widget/email_and_password.dart';
 import '../../../core/theming/styles.dart';
 import 'widget/dont_have_an_account.dart';
 import 'widget/terms_and_conditions.dart';
@@ -33,33 +35,30 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyles.font14Gray400Weight,
               ),
               verticalSpacing(30),
-              const GeneralTextFormField(hintText: "Email"),
-              verticalSpacing(15),
-              const GeneralTextFormField(
-                hintText: "Password",
-                isObsecure: true,
-              ),
-              Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: Text(
-                  'Forgot Password?',
-                  style: TextStyles.font14Blue400Weight,
-                ),
-              ),
+              const EmailAndPassword(),
               verticalSpacing(30),
               GeneralBlueButton(
                   text: "Login",
                   onPressed: () {
-                    //TODO: Login logic
+                    validateThenLogin(context);
                   }),
               verticalSpacing(50),
               const TermsAndConditions(),
               verticalSpacing(20),
-              const DontHaveAnAccount()
+              const DontHaveAnAccount(),
+              const BuildBlocListener()
             ],
           ),
         ),
       )),
     );
+  }
+
+  void validateThenLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginStates(LoginRequestBody(
+          email: context.read<LoginCubit>().emailController.text,
+          password: context.read<LoginCubit>().passwordController.text));
+    }
   }
 }
