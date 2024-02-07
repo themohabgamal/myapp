@@ -22,4 +22,9 @@ class AppRegex {
     final digitRegex = RegExp(r'\d');
     return digitRegex.hasMatch(password);
   }
+
+  static bool isValidPhone(String phoneNumber) {
+    RegExp phoneRegex = RegExp(r'^01[0-2]\d{8}$');
+    return phoneRegex.hasMatch(phoneNumber);
+  }
 }
