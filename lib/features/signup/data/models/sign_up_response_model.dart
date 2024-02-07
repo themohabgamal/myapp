@@ -1,24 +1,25 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-part '../login_response_model.g.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'sign_up_response_model.g.dart';
 
 @JsonSerializable()
-class LoginResponseModel {
+class SignupResponseModel {
   final String message;
   final bool status;
   final int code;
   final Data data;
 
-  LoginResponseModel({
+  SignupResponseModel({
     required this.message,
     required this.status,
     required this.code,
     required this.data,
   });
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseModelFromJson(json);
+  factory SignupResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$SignupResponseModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$LoginResponseModelToJson(this);
+  Map<String, dynamic> toJson() => _$SignupResponseModelToJson(this);
 }
 
 @JsonSerializable()

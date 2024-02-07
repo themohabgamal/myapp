@@ -11,6 +11,8 @@ class GeneralTextFormField extends StatelessWidget {
   final bool? isObsecure;
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
+  final TextEditingController? controller;
+  final Function(String?) validation;
   const GeneralTextFormField({
     super.key,
     required this.hintText,
@@ -18,11 +20,17 @@ class GeneralTextFormField extends StatelessWidget {
     this.isObsecure,
     this.enabledBorder,
     this.focusedBorder,
+    this.controller,
+    required this.validation,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        controller: controller,
+        validator: (value) {
+          return validation(value);
+        },
         obscureText: isObsecure ?? false,
         decoration: InputDecoration(
           isDense: true,
@@ -40,6 +48,10 @@ class GeneralTextFormField extends StatelessWidget {
                 borderSide: const BorderSide(
                     color: ColorsManager.lightGray, width: 1.3),
               ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: const BorderSide(color: Colors.red, width: 1.3),
+          ),
           hintText: hintText,
           hintStyle: TextStyles.font14lighterGray500Weight,
           fillColor: ColorsManager.morelighterGray,
