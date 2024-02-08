@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/core/helpers/spacing.dart';
 import 'package:myapp/core/widgets/general_blue_button.dart';
-import 'package:myapp/features/login/data/models/login_request_body.dart';
 import 'package:myapp/features/login/logic/cubit/login_cubit.dart';
 import 'package:myapp/features/login/ui/widget/build_bloc_listener.dart';
 import 'package:myapp/features/login/ui/widget/email_and_password.dart';

@@ -34,8 +34,9 @@ class BuildBlocListener extends StatelessWidget {
           }, error: (error) {
             Navigator.of(context).pop();
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(error),
+              const SnackBar(
+                content:
+                    Text("No User Found With These Credentials, Try Again"),
                 backgroundColor: Colors.red,
               ),
             );
